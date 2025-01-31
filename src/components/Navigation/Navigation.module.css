@@ -1,0 +1,30 @@
+.navContainer {
+  display: flex;
+  gap: 7px;
+}
+
+.navLink {
+  text-decoration: none;
+  font-size: 14px;
+  color: rgba(220, 182, 255, 0.899);
+  &:hover {
+    color: rgb(243, 238, 240);
+  }
+}
+.active {
+  color: rgb(243, 238, 240);
+}
+
+@media screen and (min-width: 768px) {
+  .navContainer  {
+    gap: 15px;
+  }
+  .navLink {
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .navLink {
+    font-size: 25px;
+  }
+}
