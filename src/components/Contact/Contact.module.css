@@ -1,0 +1,30 @@
+.contactList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.contactPhone {
+  font-size: 20px;
+}
+
+
+.icon {
+  margin-right: 10px;
+  
+}
+.contactName {
+  font-size: 25px;
+}
+
+.button{
+  height: 30px;
+  padding: 5px;
+  background-color: rgb(253, 13, 193);
+  color: white;
+  border-radius: 5px;
+  border-style: none;
+  cursor: pointer;
+  font-size: 18px;
+}

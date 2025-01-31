@@ -1,0 +1,26 @@
+.form {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  && input {
+  padding: 15px;
+  background-color: #ffffff;
+  color: #252525;
+  border: 2px solid #d642f3;
+  border-radius: 5px;
+  font-size: 18px;
+  &:focus {
+    border: 2px solid #f342af;
+    outline: none;
+    }
+  }
+}
+
+.textSearch {
+  font-size: 25px;
+  margin-top: 20px;
+  font-weight: 500;
+  text-align: center;
+}
