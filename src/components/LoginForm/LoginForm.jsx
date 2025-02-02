@@ -1,7 +1,7 @@
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
-import { login } from "../../redux/auth/operations";
+import { logIn  } from "../../redux/auth/operations";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import css from "./LoginForm.module.css";
 import * as Yup from "yup";
@@ -28,7 +28,7 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, options) => {
-    dispatch(login(values));
+    dispatch(logIn(values));
     options.resetForm();
   };
 
@@ -56,7 +56,7 @@ const LoginForm = () => {
             component="span"
             className={css.errorMessage}
           />
-          <label className={s.fieldTitle}>Password</label>
+          <label className={css.fieldTitle}>Password</label>
           <Field
             name="password"
             type="password"
@@ -72,7 +72,7 @@ const LoginForm = () => {
             Login
           </button>
           <p className={css.text}>
-            You don`t have account?
+            You don`t have an account?
             <Link to="/register" className={css.link}>
               Sign up!
             </Link>

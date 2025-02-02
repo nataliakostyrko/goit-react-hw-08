@@ -1,9 +1,9 @@
-.authNav {
+.links {
   display: flex;
   gap: 10px;
 }
 
-.navLink {
+.link {
   text-decoration: none;
   font-size: 14px;
   color: rgba(220, 182, 255, 0.899);
@@ -15,17 +15,16 @@
 .active {
   color: rgb(243, 238, 240);
 }
-
 @media screen and (min-width: 768px) {
-  .authNav {
+  .links {
     gap: 20px;
   }
-  .navLink {
+  .link {
     font-size: 20px;
   }
 }
 @media screen and (min-width: 1240px) {
-  .navLink {
+  .link {
     font-size: 25px;
   }
 }

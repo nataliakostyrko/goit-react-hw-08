@@ -2,8 +2,8 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contacts/operations";
-import { nanoid } from "@reduxjs/toolkit";
+import { addContacts } from "../../redux/contacts/operations";
+
 
 import css from "./ContactForm.module.css";
 
@@ -28,15 +28,10 @@ const dispatch = useDispatch();
       .max(50, 'Number must be less than 50 characters!'),    
   });
 
-  const handleSubmit = (values, { resetForm }) => {
-    const newContact = {
-      id: nanoid(),
-      name: values.name,
-      number: values.number,
-    };
-
-    dispatch(addContact(newContact));
-    resetForm();
+  const handleSubmit = (values, actions) => {
+    const newContact = {name: values.name, number: values.number}
+    dispatch(addContacts(newContact));
+    actions.resetForm();
   };
 
   return (

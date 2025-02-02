@@ -69,7 +69,7 @@ const dispatch = useDispatch();
             component="span"
             className={css.errorMessage}
           />
-          <label className={s.fieldTitle}>Password</label>
+          <label className={css.fieldTitle}>Password</label>
           <Field
             name="password"
             type="password"

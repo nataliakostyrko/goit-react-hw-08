@@ -1,63 +1,51 @@
-import "./App.module.css";
-import { Route, Routes } from "react-router-dom";
-import Layout from "./components/Layout";
-import HomePage from "./pages/HomePage/HomePage";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
+import { Route, Routes } from 'react-router-dom';
 import ContactsPage from "./pages/ContactsPage/ContactsPage";
-import NotFound from "./pages/NotFoundPage/NotFoundPage";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { refreshUser } from "./redux/auth/operations";
-import { PrivateRoute } from "./components/PrivateRoute";
-import { RestrictedRoute } from "./components/RestrictedRoute";
-import { selectIsRefreshing } from "./redux/auth/selectors";
-import Loader from "./components/Loader/Loader";
+import s from './App.module.css';
+import Layout from './components/Layout';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import HomePage from './pages/HomePage/HomePage';
+import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
+import LoginPage from './pages/LoginPage/LoginPage';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { refreshUser } from './redux/auth/operations';
+import { PrivateRoute } from './components/PrivateRoute';
+import { PublicRoute } from './components/PublicRoute';
+import { selectIsRefreshing } from './redux/auth/selectors';
 
-const App = () => {
+
+function App() {  
+  
   const dispatch = useDispatch();
+
   const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
-
-  return isRefreshing ? (
-    <Loader />
-  ) : (
-    <>
+  
+  return  isRefreshing ? null : (
+    <div className={s.container}>      
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path='/' element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route
-            path="/contacts"
-            element={
-              <PrivateRoute>
-                <ContactsPage />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <RestrictedRoute>
-                <LoginPage />
-              </RestrictedRoute>
-            }
-          />
-          <Route
-            path="/register"
-            element={
-              <RestrictedRoute>
-                <RegistrationPage />
-              </RestrictedRoute>
-            }
-          />
+          <Route path='/register' element={
+            <PublicRoute>
+              <RegistrationPage />
+            </PublicRoute>} />
+          <Route path='/login' element={
+            <PublicRoute>
+              <LoginPage />
+            </PublicRoute>} />
+          <Route path='/contacts' element={
+            <PrivateRoute>
+              <ContactsPage />
+            </PrivateRoute>} />
+          <Route path='*' element={<NotFoundPage/>}/>
         </Route>
-        <Route path="*" element={<NotFound />} />
       </Routes>
-    </>
+    </div>
   );
-};
+}
 
 export default App;
