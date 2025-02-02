@@ -8,8 +8,8 @@ export const register = createAsyncThunk(
             const { data } = await contactsApi.post('/users/signup', credentials);
             setToken(data.token);
             return data;
-        } catch (err) {
-            return thunkApi.rejectWithValue(err.message);
+        } catch (error) {
+            return thunkApi.rejectWithValue(error.message);
         }
     }
 );
