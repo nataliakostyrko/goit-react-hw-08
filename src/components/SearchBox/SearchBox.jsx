@@ -12,7 +12,8 @@ const SearchBox = () => {
   return (
     <div className={css.form}>
       <p className={css.textSeach}>Find contact by name:</p>
-      <input type="text" value={value}
+      <input 
+        type="text" 
         onChange={(event) => dispatch(changeFilter(event.target.value))}  />
     </div>
   );
